@@ -1,19 +1,18 @@
-//Context API
 import React, { createContext, useState } from 'react'
-import FirstChild from './Component/FirstChild'
+import Profile from './Component/Profile'
 
-let MessageContext = createContext()
+const context = createContext()
 
 function App() {
-  let [ Message , SetMessage] = useState("Hello, Grand Child!")
-  let [Coins, SetCoins] = useState([1,2,3,4,5])
-  return <>
-  <h1>Parent Component</h1>
-  <hr/>
-  <MessageContext.Provider value={{Message,Coins}}>
-  <FirstChild />
-  </MessageContext.Provider>
-  </>
+  const [ProfileName,SetProfileName] = useState("")
+  return (
+    <><h6>{ProfileName}</h6>
+     
+    <context.Provider value={{ProfileName,SetProfileName}}>
+      <Profile />
+    </context.Provider>
+    </>
+  )
 }
 
-export { App as default , MessageContext }
+export {App as default, context}
